@@ -1,0 +1,6 @@
+E:\Dev\DtfParser\ParseDtf\bin\Debug\ParseDtf.exe.config
+E:\Dev\DtfParser\ParseDtf\bin\Debug\ParseDtf.exe
+E:\Dev\DtfParser\ParseDtf\bin\Debug\ParseDtf.pdb
+E:\Dev\DtfParser\ParseDtf\obj\Debug\ParseDtf.csprojResolveAssemblyReference.cache
+E:\Dev\DtfParser\ParseDtf\obj\Debug\ParseDtf.exe
+E:\Dev\DtfParser\ParseDtf\obj\Debug\ParseDtf.pdb
