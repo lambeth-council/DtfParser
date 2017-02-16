@@ -14,10 +14,14 @@ The project uses a command line Visual Studio 2015 project with .Net 4.5.2 and S
 
 Once compiled, go to the directory containing the executable (usually bin\debug) and run a command of the format
 
-parsedtf load "<ConnectionString>" "<FullFileName>"
+parsedtf load "[ConnectionString]" "[FullFileName]"
+
 ConnectionString - the sql connection string
+
 FullFileName - the full file name including drive and path
+
 e.g.
+
 parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\DtfFiles\llpg.csv"
 
 There are a few basic test files in the TestDtfFiles folder to try out
@@ -25,7 +29,8 @@ There are a few basic test files in the TestDtfFiles folder to try out
 ## Motivation
 
 I couldn't find any open source code to do this, yet it's used by all councils in the UK. 
-Once the addresses are in a database then it opens up the possibility of doing
+
+Once the addresses are in a database then it opens up the possibility of
 * health checks on the LLPG data, making sure fields are populated correctly
 * bulk fuzzy address matching to get UPRNs from free typed address text
 * address lookup widgets 
@@ -33,7 +38,9 @@ Once the addresses are in a database then it opens up the possibility of doing
 ## Installation
 
 Create a blank Sql database
+
 Run Db\Schema.sql to create the schema
+
 Run Db\Data.sql to populate the tables
 
 Compile the project
@@ -44,24 +51,34 @@ Run a command line as in the Code Example above
 
 Theres only two functions currently
 
-parsedtf load "<ConnectionString>" "<FullFileName>" - loads the DTF file into the database
-parsedtf clearall "<ConnectionString>" - resets the database
+parsedtf load "[ConnectionString]" "[FullFileName]" - loads the DTF file into the database
 
-## Database Tables
+parsedtf clearall "[ConnectionString]" - resets the database
 
-DtfLine - contains all lines from all files that have been loaded, acts like a log. 
+## Database 
 
-BLPU - Basic Land and Property Unit - DTF Record Identifier 21
-LPI - Land and Property Identifier - DTF Record Identifier 24
-StreetDescriptor - Street Descriptor - DTF Record Identifier 15
-StreetRecord - Street Record - DTF Record Identifier 11
+Tables
+* DtfLine - contains all lines from all files that have been loaded, acts like a log. 
 
-RecordIdentifier - a list of all the DTF Record Identifiers
-Version - a record is generated for each file loaded, and versionid used to refer back to filename / date time stamps
+* BLPU - Basic Land and Property Unit - DTF Record Identifier 21
+* LPI - Land and Property Identifier - DTF Record Identifier 24
+* StreetDescriptor - Street Descriptor - DTF Record Identifier 15
+* StreetRecord - Street Record - DTF Record Identifier 11
+
+* RecordIdentifier - a list of all the DTF Record Identifiers
+* Version - a record is generated for each file loaded, and versionid used to refer back to filename / date time stamps
+
+Views
+* vwAddresses - contains all the address fields plus record statuses and BLPU Codes
+* vwLpi - LPI fields with concatenated PAON and SAON number and description fields
+* vwDtfLine - all the DTF lines that have been loaded along with datestamps and source filenames
+
+Stored Procedures
+* spTruncateEverything - resets database 
 
 ## Tests
 
-run these from the command line replaceing <path> with your path
+Run these from the command line replaceing <path> with your path
 * parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\<path>\ParseDtf\TestDtfFiles\insert.csv"
 * Check the street record table - it should have 3 records in it
 
