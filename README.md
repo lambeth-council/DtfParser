@@ -16,14 +16,14 @@ It will likely work with most versions of Sql Server, and also earlier versions 
 
 Once compiled, go to the directory containing the executable (usually bin\debug) and in a command window run a command of the format
 
-parsedtf load "[ConnectionString]" "[FullFileName]"
+parsedtf loadfile "[ConnectionString]" "[FullFileName]"
 
 * ConnectionString - the sql connection string
 * FullFileName - the full file name including drive and path
 
 e.g.
 
-parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\DtfFiles\llpg.csv"
+parsedtf loadfile "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\DtfFiles\llpg.csv"
 
 There are a few basic test files in the TestDtfFiles folder to try out.
 
@@ -48,7 +48,7 @@ Once the addresses are in a database then it opens up the possibility of
 
 Theres only two functions currently
 
-* parsedtf load "[ConnectionString]" "[FullFileName]" - loads the DTF file into the database
+* parsedtf loadfile "[ConnectionString]" "[FullFileName]" - loads the DTF file into the database
 
 * parsedtf clearall "[ConnectionString]" - resets the database
 
@@ -76,13 +76,13 @@ Stored Procedures
 ## Tests
 
 Run these from the command line replacing [path] with your path
-* parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\insert.csv"
+* parsedtf loadfile "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\insert.csv"
 * Check the street record table - it should have 3 records in it
 
-* parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\update.csv"
+* parsedtf loadfile "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\update.csv"
 * The record with USRN = 20900161 has been updated so Street_Start_x = 666666.00, also it's versionId has increased
 
-* parsedtf load "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\delete.csv"
+* parsedtf loadfile "data source=localhost;initial catalog=DTF;integrated security=True;" "C:\[path]\ParseDtf\TestDtfFiles\delete.csv"
 * The record with USRN = 20900162 has been deleted 
 
 * Check the version table and you can see what files were run and when. Messsages field gives you a full breakdown or insert/deletes. Note an update is just a delete followed by an insert.

@@ -20,7 +20,7 @@ namespace ParseDtf
             Console.WriteLine("load \"<connectionstring>\" \"<fullfilename>\"");
             Console.WriteLine("clearall \"<connectionstring>\"");
             Console.WriteLine("e.g.");
-            Console.WriteLine("parsedtf load \"data source=localhost;initial catalog=DTF;integrated security=True;\" \"c:\\dtffiles\\llpg.csv\"");
+            Console.WriteLine("parsedtf loadfile \"data source=localhost;initial catalog=DTF;integrated security=True;\" \"c:\\dtffiles\\llpg.csv\"");
             Console.WriteLine("parsedtf clearall \"data source=localhost;initial catalog=DTF;integrated security=True;\"");
         }
 
